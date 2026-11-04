@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "RMT3 — Defense demo (5 questions)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_defense_demo.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "RMT3 — New full run (500 questions)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_full_500.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "RMT3 — Recalculate final statistics",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_analysis_500.py",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

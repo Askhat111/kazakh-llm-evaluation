@@ -1,0 +1,42 @@
+KazQAD annotation protocol
+
+Unit: one complete model response to one question. Label all five binary variables independently.
+Use every preserved reference span and evidence passage. Resolve multi-span versus alias
+interpretation using the reviewed benchmark field reference_interpretation.
+
+accuracy = 1 when the direct answer is factually correct and complete for the question,
+including legitimate morphological/semantic variants. Otherwise 0. Score factual accuracy
+independently of response language. A response can contain a correct direct answer and
+a separate false elaboration: accuracy=1 and hallucination=1 is possible.
+
+hallucination = 1 when at least one factual claim is demonstrably false, contradicted by
+the reference evidence or a recorded authoritative source. Record the contradicted claim
+and evidence in verification_source/notes. Merely missing from a reference passage is
+not sufficient to establish falsity. Use 0 if no demonstrably false claim is established.
+
+abstention = 1 for a pure refusal or explicit inability to supply a direct answer.
+Do not mark a factual answer as a pure abstention merely because it contains a hedge.
+A pure abstention has accuracy=0; hallucination depends on any other claims actually made.
+
+unverifiable = 1 when at least one factual claim cannot be verified or refuted with the
+available evidence. Record the claim and search/source limitation in notes. This variable
+may coexist with hallucination when different claims have different statuses.
+hallucination=0 must not be interpreted as proof that all claims are true.
+
+language_failure = 1 when the substantive answer is predominantly in Russian/English
+instead of Kazakh; 0 when predominantly Kazakh. Proper names, years or short shared
+forms alone do not establish a language failure. Record mixed/ambiguous cases in notes.
+The presence/absence of Kazakh-specific characters is not an automatic language label.
+
+error_type: use one or more of entity_or_date_substitution, false_elaboration,
+morphological_meaning_error, language_drift, abstention, unverifiable, truncation, other.
+Do not classify every wrong answer as an additional hallucination without checking its claims.
+
+Two annotators score independently while model identity is hidden. Preserve their original
+files. Calculate agreement before adjudication, separately for accuracy and hallucination
+(auxiliary labels may also be reported). Consensus produces a third file; never overwrite
+the independent files. If agreement is poor, report it and document rubric clarification;
+do not edit labels merely to reach a target Kappa. For constant labels Kappa may be undefined.
+
+If generation is truncated, score the visible text consistently, mark truncation and report
+its frequency. Do not rerun only the weaker model with more tokens.

@@ -1,0 +1,28 @@
+{
+  "llama_server": "runtime/llama-server.exe",
+  "port": 8089,
+  "threads": 8,
+  "context_size": 2048,
+  "models": [
+    {
+      "key": "baseline_llama31",
+      "gguf": "models/baseline-Q4_K_M.gguf",
+      "quantization": "Q4_K_M",
+      "source_repository": "meta-llama/Llama-3.1-8B-Instruct",
+      "source_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "expected_sha256": "79a64c6648f12ff802d6516abf0bce8789f3acb55c706c4f0b4f4429d158f4ca",
+      "chat_template_file": "templates/baseline_llama31.jinja",
+      "tokenizer_path": "tokenizers/baseline_llama31"
+    },
+    {
+      "key": "adapted_sherkala",
+      "gguf": "models/sherkala-Q4_K_M.gguf",
+      "quantization": "Q4_K_M",
+      "source_repository": "inception42/Llama-3.1-Sherkala-8B-Chat",
+      "source_revision": "ab873dfe8b5c86598ed3ea9dcc548eb47a1e228f",
+      "expected_sha256": "a716426efda30a55b3a6e9211117540f3b8c9439c9fc9c09be4cba3bc17bca97",
+      "chat_template_file": "templates/adapted_sherkala.jinja",
+      "tokenizer_path": "tokenizers/adapted_sherkala"
+    }
+  ]
+}

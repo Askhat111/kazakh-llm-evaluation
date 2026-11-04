@@ -1,0 +1,12 @@
+{
+  "baseline_llama31": {
+    "repository": "meta-llama/Llama-3.1-8B-Instruct",
+    "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "source": "tokenizer_config.json"
+  },
+  "adapted_sherkala": {
+    "repository": "inception42/Llama-3.1-Sherkala-8B-Chat",
+    "revision": "ab873dfe8b5c86598ed3ea9dcc548eb47a1e228f",
+    "source": "README.md official usage example"
+  }
+}

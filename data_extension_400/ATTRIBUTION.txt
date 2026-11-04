@@ -1,0 +1,6 @@
+KazQAD: Kazakh Open-Domain Question Answering Dataset
+Yeshpanov, Efimov, Boytsov, Shalkarbayuli and Braslavski (2024).
+https://github.com/IS2AI/KazQAD
+Pinned commit ab8684a667109f2a7345f4f89ab3b123e8d78e1f
+License CC BY-SA 4.0. Original source_test.jsonl is unchanged.
+Candidates are filtered and grouped derivatives; source IDs and passages are retained.

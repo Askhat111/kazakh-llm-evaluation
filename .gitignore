@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+models/
+runtime/
+tokenizers/
+runs/
+outputs/
+*.gguf
+*.safetensors
+*.zip
+*.log
+*token*.txt
+credentials*
