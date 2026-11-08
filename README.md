@@ -67,6 +67,50 @@ This recalculates statistics from saved labels; it does not run either model. Ag
 
 Alternatively, open the repository in VS Code and select a configuration in **Run and Debug**.
 
+## Reproduction Test on macOS (Apple Silicon)
+
+The statistical analysis for release `assignment-4` (commit `2560faf892ffe64aad5062ed9238cf44ec07067e`) was independently reproduced on a MacBook Air with Apple M3, macOS 26.6.2, ARM64 architecture, and Python 3.13.2. This test recalculates statistics from existing human annotations; it does not perform model inference.
+
+Place the existing annotation package in `annotation_final_500/` at the repository root. It must contain:
+
+- `rater_1_500.csv`
+- `rater_2_500.csv`
+- `consensus_500.csv`
+- `PRIVATE_combined_blinding_key.json`
+
+The annotation files and private blinding key are not distributed through the public repository and must be obtained separately from the final project package.
+
+From the repository root, create and activate a virtual environment, then install the dependencies:
+
+```bash
+python3 -m venv env
+source env/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -m pip check
+```
+
+Run the analysis:
+
+```bash
+python3 kazqad_eval_pipeline.py analyze \
+  --rater1 annotation_final_500/rater_1_500.csv \
+  --rater2 annotation_final_500/rater_2_500.csv \
+  --consensus annotation_final_500/consensus_500.csv \
+  --key annotation_final_500/PRIVATE_combined_blinding_key.json \
+  --out analysis_repeated_500.json
+```
+
+The original reproduction instructions used the incorrect path `code/kazqad_eval_pipeline.py`. The correct path in this release is `kazqad_eval_pipeline.py` at the repository root.
+
+Dependencies installed successfully, `pip check` passed, and the analysis completed with exit code 0, producing `analysis_repeated_500.json` for 500 paired questions:
+
+| Model | Correct | Accuracy |
+| --- | --- | --- |
+| Sherkala | 253/500 | 50.6% |
+| Llama | 116/500 | 23.2% |
+
+Both accuracies exactly match the original report. Source code and annotation files remained unchanged during the test.
+
 ## Interpretation
 
 The study compares two local Q4_K_M configurations with a 2,048-token context, eight CPU threads and a 128-token output cap. It is exploratory: the sample was expanded after the first 100 results were inspected. Subject imbalance, related questions, annotation uncertainty, quantization and laptop conditions limit generalization. A difference between the models does not isolate a causal effect of Kazakh adaptation.
