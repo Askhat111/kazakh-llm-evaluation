@@ -16,7 +16,9 @@ The code generates paired answers, prepares evaluation data and calculates accur
 - `templates/`: model-specific chat templates.
 - `.vscode/`: launch configurations for the demo, full run and analysis.
 
-Model weights, tokenizer files, runtime binaries, credentials, raw responses, human rating files and reports are not included in this code repository. Existing research results are kept in the separate final project package.
+- `annotation_final_500/`: the two independent rater files and the consensus file for all 1,000 responses (`rater_1_500.csv`, `rater_2_500.csv`, `consensus_500.csv`). Each row holds the question, the blinded response, the reference answers and interpretation, the evidence, five binary labels, error type, verification source and notes.
+
+Model weights, tokenizer files, runtime binaries and credentials are not included in this repository. The private blinding key that links response identifiers to models is kept outside the repository.
 
 ## Setup
 
@@ -57,7 +59,7 @@ Generate new answers:
 
 Each execution writes to a new timestamped directory under `runs/`. The demo produces a readable `responses.html`. A new full run produces raw answers and a manifest; it does not automatically create human ratings or consensus labels.
 
-For analysis of the existing study, copy the `annotation_final_500` folder from the final package into `outputs/Assignment3_500_Final/`, then run:
+For analysis of the existing study, copy the `annotation_final_500` folder into `outputs/Assignment3_500_Final/` and add the private blinding key `PRIVATE_combined_blinding_key.json` to the same folder, then run:
 
 ```powershell
 .\.venv\Scripts\python.exe run_analysis_500.py
@@ -113,7 +115,7 @@ Both accuracies exactly match the original report. Source code and annotation fi
 
 ## Interpretation
 
-The study compares two local Q4_K_M configurations with a 2,048-token context, eight CPU threads and a 128-token output cap. It is exploratory: the sample was expanded after the first 100 results were inspected. Subject imbalance, related questions, annotation uncertainty, quantization and laptop conditions limit generalization. A difference between the models does not isolate a causal effect of Kazakh adaptation.
+The study compares two local Q4_K_M configurations with a 2,048-token context, eight CPU threads and a 128-token output cap. It is exploratory: it was not pre-registered, uses one sample and one run, and the questions were screened by a single reviewer. Subject imbalance, related questions, annotation uncertainty, quantization and laptop conditions limit generalization. A difference between the models does not isolate a causal effect of Kazakh adaptation.
 
 ## Data and third-party attribution
 
