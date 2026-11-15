@@ -18,7 +18,7 @@ The code generates paired answers, prepares evaluation data and calculates accur
 
 - `annotation_final_500/`: the two independent rater files and the consensus file for all 1,000 responses (`rater_1_500.csv`, `rater_2_500.csv`, `consensus_500.csv`). Each row holds the question, the blinded response, the reference answers and interpretation, the evidence, five binary labels, error type, verification source and notes.
 
-Model weights, tokenizer files, runtime binaries and credentials are not included in this repository. The private blinding key that links response identifiers to models is kept outside the repository.
+Model weights, tokenizer files, runtime binaries and credentials are not included in this repository. The blinding key that links response identifiers to models (`PRIVATE_combined_blinding_key.json`) is published in `annotation_final_500/` now that rating is complete.
 
 ## Setup
 
@@ -59,7 +59,7 @@ Generate new answers:
 
 Each execution writes to a new timestamped directory under `runs/`. The demo produces a readable `responses.html`. A new full run produces raw answers and a manifest; it does not automatically create human ratings or consensus labels.
 
-For analysis of the existing study, copy the `annotation_final_500` folder into `outputs/Assignment3_500_Final/` and add the private blinding key `PRIVATE_combined_blinding_key.json` to the same folder, then run:
+For analysis of the existing study, copy the `annotation_final_500` folder (including `PRIVATE_combined_blinding_key.json`) into `outputs/Assignment3_500_Final/`, then run:
 
 ```powershell
 .\.venv\Scripts\python.exe run_analysis_500.py
@@ -80,7 +80,7 @@ Place the existing annotation package in `annotation_final_500/` at the reposito
 - `consensus_500.csv`
 - `PRIVATE_combined_blinding_key.json`
 
-The annotation files and private blinding key are not distributed through the public repository and must be obtained separately from the final project package.
+The annotation files and the blinding key are included in `annotation_final_500/` in this repository.
 
 From the repository root, create and activate a virtual environment, then install the dependencies:
 
@@ -127,11 +127,11 @@ Benchmark checksum: `data/main_500.json` SHA-256 `9f88cf7658182a127d25c469db1041
 | Manuscript item | How to reproduce |
 |---|---|
 | Tables 2 and 3, agreement (Section 4.2) | `python run_analysis_500.py` (see above) |
-| Tables 2, 4, 5 and timing (Sections 4.3-4.5) | `python make_tables.py path/to/PRIVATE_combined_blinding_key.json` |
+| Tables 2, 4, 5 and timing (Sections 4.3-4.5) | `python make_tables.py` |
 | Figures 1 and 2 | PNG files and the chart workbook with their source counts are in `figures/` |
 | Raw generations with timings and finish reasons | `logs_500/raw_generations_500.jsonl`, `logs_500/combined_manifest.json` |
 
-`make_tables.py` reads `data/main_500.json`, `annotation_final_500/consensus_500.csv` and `logs_500/` and prints the counts shown in the manuscript. The blinding key is distributed with the final project package, not in this repository.
+`make_tables.py` reads `data/main_500.json`, `annotation_final_500/consensus_500.csv` and `logs_500/` and prints the counts shown in the manuscript. The blinding key is read from `annotation_final_500/PRIVATE_combined_blinding_key.json`.
 
 ## Interpretation
 
