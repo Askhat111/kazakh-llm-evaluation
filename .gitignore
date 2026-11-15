@@ -15,3 +15,13 @@ outputs/
 *.log
 *token*.txt
 credentials*
+
+# local-only legacy / preparation files (pilot and 100-question stages)
+data/candidate_review.csv
+data/candidates.json
+data/main_100_*
+data/pilot_5_*
+data/preparation_summary.json
+data/source_test.jsonl
+data_extension_400/
+README_START_HERE.txt
