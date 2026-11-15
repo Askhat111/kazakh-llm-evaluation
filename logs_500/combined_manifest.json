@@ -1,0 +1,9 @@
+{
+  "n_questions": 500,
+  "n_responses": 1000,
+  "original_raw_sha256": "26944b14e66aebd86f24ae338dbc359653b77535b450d99aeb3e052ddd73ad39",
+  "extension_raw_sha256": "113e026a78edd7489178209f75fc8428adcd622ed804024677ea8b8221ea8046",
+  "combined_sha256": "bd57a66f3f9adf6b211c29bf2b5db734daf1aadd073cc28691e0c2ce33af7a47",
+  "human_labels": "original 200 complete; new 800 pending",
+  "excluded_attempt": "26-response attempt excluded because of wording correction; no attempted response used for screening"
+}

@@ -122,6 +122,17 @@ Both accuracies exactly match the original report. Source code and annotation fi
 
 Benchmark checksum: `data/main_500.json` SHA-256 `9f88cf7658182a127d25c469db104129de39ce51e84ddabc14baa61fcc216503`.
 
+## Reproducing the manuscript tables and figures
+
+| Manuscript item | How to reproduce |
+|---|---|
+| Tables 2 and 3, agreement (Section 4.2) | `python run_analysis_500.py` (see above) |
+| Tables 2, 4, 5 and timing (Sections 4.3-4.5) | `python make_tables.py path/to/PRIVATE_combined_blinding_key.json` |
+| Figures 1 and 2 | PNG files and the chart workbook with their source counts are in `figures/` |
+| Raw generations with timings and finish reasons | `logs_500/raw_generations_500.jsonl`, `logs_500/combined_manifest.json` |
+
+`make_tables.py` reads `data/main_500.json`, `annotation_final_500/consensus_500.csv` and `logs_500/` and prints the counts shown in the manuscript. The blinding key is distributed with the final project package, not in this repository.
+
 ## Interpretation
 
 The study compares two local Q4_K_M configurations with a 2,048-token context, eight CPU threads and a 128-token output cap. It is exploratory: it was not pre-registered, uses one sample and one run, and the questions were screened by a single reviewer. Subject imbalance, related questions, annotation uncertainty, quantization and laptop conditions limit generalization. A difference between the models does not isolate a causal effect of Kazakh adaptation.
