@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Factual Accuracy and Hallucination in Kazakh-Language Generation: evaluation code and labels"
+authors:
+  - family-names: Rakhmetollayev
+    given-names: Askhat
+  - family-names: Gaisa
+    given-names: Aldiyar
+  - family-names: Khassenov
+    given-names: Tamerlan
+repository-code: "https://github.com/Askhat111/kazakh-llm-evaluation"
+license: MIT
+version: final
+date-released: 2026-11-16

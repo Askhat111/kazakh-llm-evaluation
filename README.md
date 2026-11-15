@@ -113,6 +113,15 @@ Dependencies installed successfully, `pip check` passed, and the analysis comple
 
 Both accuracies exactly match the original report. Source code and annotation files remained unchanged during the test.
 
+## Headline results (500 paired questions, release `final`)
+
+| Outcome | Llama-3.1-8B-Instruct | Sherkala-8B-Chat |
+|---|---|---|
+| Correct direct answer | 116 (23.2%) | 253 (50.6%) |
+| Confirmed false claim | 237 (47.4%) | 173 (34.6%) |
+
+Benchmark checksum: `data/main_500.json` SHA-256 `9f88cf7658182a127d25c469db104129de39ce51e84ddabc14baa61fcc216503`.
+
 ## Interpretation
 
 The study compares two local Q4_K_M configurations with a 2,048-token context, eight CPU threads and a 128-token output cap. It is exploratory: it was not pre-registered, uses one sample and one run, and the questions were screened by a single reviewer. Subject imbalance, related questions, annotation uncertainty, quantization and laptop conditions limit generalization. A difference between the models does not isolate a causal effect of Kazakh adaptation.
@@ -121,4 +130,4 @@ The study compares two local Q4_K_M configurations with a 2,048-token context, e
 
 The benchmark is derived from [KazQAD](https://github.com/IS2AI/KazQAD), pinned source revision `ab8684a667109f2a7345f4f89ab3b123e8d78e1f`. Questions were selected and adapted for closed-book generation; retained passages support evaluation. Dataset attribution and the CC BY-SA 4.0 license are in `data/`.
 
-The upstream llama.cpp header in `code_provenance/` belongs to [llama.cpp](https://github.com/ggml-org/llama.cpp). No model weights or runtime binaries are distributed here. No separate license is granted for the project-authored code at this stage.
+The upstream llama.cpp header in `code_provenance/` belongs to [llama.cpp](https://github.com/ggml-org/llama.cpp). No model weights or runtime binaries are distributed here. Project-authored code is released under the MIT licence (see LICENSE); the benchmark data keep their CC BY-SA 4.0 licence.
