@@ -9,10 +9,10 @@ The code generates paired answers, prepares evaluation data and calculates accur
 - `run_defense_demo.py`: generate fresh answers to the first five fixed questions.
 - `run_full_500.py`: generate 1,000 fresh answers, 500 from each model.
 - `run_analysis_500.py`: recalculate statistics from the local final annotation package.
-- `infer_main_100.py`: shared inference runner; its historical name remains, but it supports 100, 400 and 500 questions.
+- `infer_main.py`: shared inference runner for the 500-question benchmark.
 - `kazqad_eval_pipeline.py`: data preparation and statistical analysis.
 - `llama_native_b11739.py`: native llama.cpp CPU binding.
-- `data_extension_400/main_500.json`: the fixed 500-question benchmark.
+- `data/main_500.json`: the fixed 500-question benchmark.
 - `templates/`: model-specific chat templates.
 - `.vscode/`: launch configurations for the demo, full run and analysis.
 
@@ -119,6 +119,6 @@ The study compares two local Q4_K_M configurations with a 2,048-token context, e
 
 ## Data and third-party attribution
 
-The benchmark is derived from [KazQAD](https://github.com/IS2AI/KazQAD), pinned source revision `ab8684a667109f2a7345f4f89ab3b123e8d78e1f`. Questions were selected and adapted for closed-book generation; retained passages support evaluation. Dataset attribution and the CC BY-SA 4.0 license are in `data_extension_400/`.
+The benchmark is derived from [KazQAD](https://github.com/IS2AI/KazQAD), pinned source revision `ab8684a667109f2a7345f4f89ab3b123e8d78e1f`. Questions were selected and adapted for closed-book generation; retained passages support evaluation. Dataset attribution and the CC BY-SA 4.0 license are in `data/`.
 
 The upstream llama.cpp header in `code_provenance/` belongs to [llama.cpp](https://github.com/ggml-org/llama.cpp). No model weights or runtime binaries are distributed here. No separate license is granted for the project-authored code at this stage.

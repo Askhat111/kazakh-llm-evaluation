@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 def select_questions(n):
-    source = ROOT / 'data_extension_400/main_500.json'
+    source = ROOT / 'data/main_500.json'
     questions = json.loads(source.read_text(encoding='utf8'))[:n]
     if len(questions) != n:
         raise ValueError('Not enough questions')
@@ -46,7 +46,7 @@ def main():
     (run / 'demo_provenance.json').write_text(json.dumps(provenance, ensure_ascii=False, indent=2), encoding='utf8')
     print(f'LIVE DEMO: {len(questions)} questions per model. Folder: {run}', flush=True)
     print('Loading and checking models may take some time. Full technical log: execution.log', flush=True)
-    command = [sys.executable, '-X', 'utf8', '-u', str(ROOT / 'infer_main_100.py'),
+    command = [sys.executable, '-X', 'utf8', '-u', str(ROOT / 'infer_main.py'),
                '--benchmark', str(benchmark), '--config', 'laptop_config.json',
                '--assistant-screened-pilot', '--out', str(run)]
     env = os.environ.copy()
