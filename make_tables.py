@@ -1,10 +1,3 @@
-"""Recompute Tables 2, 4 and 5 and the timing summary of the manuscript.
-
-Inputs: data/main_500.json, annotation_final_500/consensus_500.csv, logs_500/raw_generations_500.jsonl
-and the blinding key annotation_final_500/PRIVATE_combined_blinding_key.json (maps the blinded
-response id to its model; published now that rating is complete).
-Usage: python make_tables.py [optional/path/to/blinding_key.json]
-"""
 import csv, json, statistics, sys
 from collections import Counter, defaultdict
 from pathlib import Path
